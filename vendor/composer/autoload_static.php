@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInita6d1aad342150ab2b30f82b74b502886
 {
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Plano\\' => 6,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Plano\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/modelsplano/php-classes',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
         'S' => 
         array (
@@ -14,12 +28,26 @@ class ComposerStaticInita6d1aad342150ab2b30f82b74b502886
                 0 => __DIR__ . '/..' . '/slim/slim',
             ),
         ),
+        'R' => 
+        array (
+            'Rain' => 
+            array (
+                0 => __DIR__ . '/..' . '/rain/raintpl/library',
+            ),
+        ),
+    );
+
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInita6d1aad342150ab2b30f82b74b502886::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita6d1aad342150ab2b30f82b74b502886::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInita6d1aad342150ab2b30f82b74b502886::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInita6d1aad342150ab2b30f82b74b502886::$classMap;
 
         }, null, ClassLoader::class);
     }

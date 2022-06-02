@@ -1,5 +1,18 @@
 {
+    "name": "modelsplano/php-classes",
+    "authors": [
+        {
+            "name": "Marcos Macmillan",
+            "email": "marcosfalar@gmail.com"
+        }
+    ],
     "require": {
-        "slim/slim": "~2.1"
+        "slim/slim": "~2.1",
+    	"rain/raintpl":"3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Plano\\": "vendor\\modelsplano\\php-classes"
+        }
     }
 }

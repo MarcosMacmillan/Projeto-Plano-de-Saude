@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => 'a97f8231bec500eb4dfb2461c27bc3a78cf0984d',
+        'name' => 'modelsplano/php-classes',
+        'dev' => true,
+    ),
+    'versions' => array(
+        'modelsplano/php-classes' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => 'a97f8231bec500eb4dfb2461c27bc3a78cf0984d',
+            'dev_requirement' => false,
+        ),
+        'rain/raintpl' => array(
+            'pretty_version' => '3.0.0',
+            'version' => '3.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rain/raintpl',
+            'aliases' => array(),
+            'reference' => '5bfdf4602b8adb0e80b222fa29ac559aa9c06abf',
+            'dev_requirement' => false,
+        ),
+        'slim/slim' => array(
+            'pretty_version' => '2.6.3',
+            'version' => '2.6.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../slim/slim',
+            'aliases' => array(),
+            'reference' => '9224ed81ac1c412881e8d762755e3d76ebf580c0',
+            'dev_requirement' => false,
+        ),
+    ),
+);
