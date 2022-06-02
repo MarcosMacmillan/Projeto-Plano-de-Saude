@@ -1,5 +1,5 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><!doctype html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,15 +15,17 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="qtdbeneficiarios" class="form-label" >Quantidade de beneficiários</label>
-                        <input type="number" class="form-control" id="qtdbeneficiarios" onchange="enter(this)">
+                        <input type="number" class="form-control" name="qntd" id="qtdbeneficiarios" onchange="enter(this)" required>
                     </div>
                     <div class="col-md-6">
                         <label for="plano" class="form-label">Plano</label>
-                        <select id="plano" class="form-select">
-                            <option selected>Selecione...</option>
-                            <option value="p1">Plano 1</option>
-                            <option value="p2">Plano 2</option>
-                            <option value="p3">Plano 3</option>
+                        <select id="plano" class="form-select" name="plano" required>
+                            <option value="" disabled selected hidden>Selecione...</option>
+                            <?php $counter1=-1;  if( isset($json2) && ( is_array($json2) || $json2 instanceof Traversable ) && sizeof($json2) ) foreach( $json2 as $key1 => $value1 ){ $counter1++; ?>
+
+                                <option value="<?php echo htmlspecialchars( $value1->codigo, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1->nome, ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                            <?php } ?>
+
                         </select>
                     </div>
                 </div>
