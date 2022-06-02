@@ -11,6 +11,13 @@ $app->get('/', function ()  {
 	$page->setTpl("form");
     
 });
+
+$app->post('/enviar', function ()  {
+
+	echo json_encode($_POST['nome']);
+});
+
+
 $app->run();
 
 
