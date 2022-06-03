@@ -14,5 +14,8 @@
         "psr-4": {
             "Plano\\": "vendor\\modelsplano\\php-classes"
         }
+    },
+    "scripts": {
+        "start": "php -S localhost:8000"
     }
 }
