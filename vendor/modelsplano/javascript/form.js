@@ -8,7 +8,7 @@ function enter(e) {
         html+="</div>"
         html+="<div class='col-md-6 mt-4'>"
         html+="    <label for='idade"+i+"' class='form-label'>Idade</label>"
-        html+="    <input type='number' class='form-control' name='idade[]' id='idade"+i+"' required>"
+        html+="    <input type='number' class='form-control' name='idade[]' id='idade"+i+"'>"
         html+="</div>"
         }
         teste.innerHTML = html;
