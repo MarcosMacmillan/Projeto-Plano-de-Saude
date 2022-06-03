@@ -1,4 +1,4 @@
-<!doctype html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!doctype html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -21,9 +21,11 @@
                         <label for="plano" class="form-label">Plano</label>
                         <select id="plano" class="form-select" name="plano" required>
                             <option value="" disabled selected hidden>Selecione...</option>
-                            {loop="$json2"}
-                                <option value="{$value->codigo}">{$value->nome}</option>
-                            {/loop}
+                            <?php $counter1=-1;  if( isset($json2) && ( is_array($json2) || $json2 instanceof Traversable ) && sizeof($json2) ) foreach( $json2 as $key1 => $value1 ){ $counter1++; ?>
+
+                                <option value="<?php echo htmlspecialchars( $value1->codigo, ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1->nome, ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                            <?php } ?>
+
                         </select>
                     </div>
                 </div>

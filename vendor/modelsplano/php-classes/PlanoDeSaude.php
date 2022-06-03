@@ -19,7 +19,7 @@ class PlanoDeSaude
         return $this->formData($price, $arrayInfos['nome'], $arrayInfos['idade']);
     }
 
-    public function searchPlan($idPlain)
+    private function searchPlan($idPlain)
     {
         $json = json_decode(file_get_contents("vendor/modelsplano/tables/plans.json"));
 
@@ -30,7 +30,7 @@ class PlanoDeSaude
             return 'Plano não encontrado!';
     }
 
-    public function searchPrices($planId, $qntd)
+    private function searchPrices($planId, $qntd)
     {
         $json = json_decode(file_get_contents("vendor/modelsplano/tables/prices.json"));
         $price = false;
@@ -44,28 +44,30 @@ class PlanoDeSaude
         return $price;
     }
 
-    public function formData($price, $name, $year)
+    private function formData($price, $name, $year)
     {
-        
-        $data = [];
+        $data = array(
+            "pessoas" => array(),
+            "total" => array()
+        );
         $total = 0;
         for($i = 0 ; $i < count($name) ; $i++){
             if(!is_numeric($year[$i])){
-                array_push($data, ["nome" => $name[$i], "idade" => 'Valor incorreto', "preco" => '']);
+                array_push($data["pessoas"], ["nome" => $name[$i], "idade" => 'Valor incorreto', "preco" => '']);
             }elseif($year[$i] <= 17){
-                array_push($data, ["nome" => $name[$i], "idade" => $year[$i], "preco" => $price->faixa1]);
+                array_push($data["pessoas"], ["nome" => $name[$i], "idade" => $year[$i], "preco" => number_format($price->faixa1, 2, ",", ".")]);
                 $total += $price->faixa1;
             }elseif($year[$i] <= 40){
-                array_push($data, ["nome" => $name[$i], "idade" => $year[$i], "preco" => $price->faixa2]);
+                array_push($data["pessoas"], ["nome" => $name[$i], "idade" => $year[$i], "preco" => number_format($price->faixa2, 2, ",", ".")]);
                 $total += $price->faixa2;
             }
             else{
-                array_push($data, ["nome" => $name[$i], "idade" => $year[$i], "preco" => $price->faixa3]);
+                array_push($data["pessoas"], ["nome" => $name[$i], "idade" => $year[$i], "preco" => number_format($price->faixa3, 2, ",", ".")]);
                 $total += $price->faixa3;
             }
         }
-        array_push($data, ['valor' => $total]);
-        return json_encode($data);
+        array_push($data["total"], ['valor' => number_format($total, 2, ",", ".")]);
+        return $data;
     }
 
     public static function setMsgErro($msg)
